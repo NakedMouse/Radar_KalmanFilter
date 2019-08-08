@@ -50,7 +50,7 @@ void InputData::getInuptData(InputData &a, ifstream &fp){
         a.timeToTime();
     }else{                                              //若读取失败将status置为-1并退出
         a.status=-1;
-        exit(0);
+        //exit(0);
     }
 
 }
