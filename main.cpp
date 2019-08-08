@@ -11,10 +11,13 @@ using namespace std;
 
 int main()
 {
-    RadarData data[100];
-    RadarData pre_data[100];
+    //本版本仅用于测试预测数据的精确度,基本思路是将所有测量数据（testfile.csv中仅包含少量数据）预先存入数组中
+    //以方便对比,由修正数据为基准预测500ms后的位置及速度，再在数组中找到与预测时间相差±50ms的数据一同输出对比
+    //并获得偏差率,仅需记录kalman滤波器文件中的数据
+    InputData mesure[6][550];
+    RadarData data[7];
+    RadarData pre_data[7];
     void kalmanFilterMain(RadarData &a ,InputData &b, RadarData &c);
-
 
     //文件读操作
     InputData inData;
@@ -22,14 +25,14 @@ int main()
     //ifstream fp("C:\\Users\\zhou\\Desktop\\2019_08_02_16_11_49.csv");
     string str;
     getline(fp,str);
-    InputData::getInuptData(inData,fp);
+    //InputData::getInuptData(inData,fp);
 
     //筛选并运行kalman滤波器
     while(inData.status!=-1){
     //for(int i=0 ; i<1700 ;i++){
         if(inData.status==2){
 
-            kalmanFilterMain(data[inData.id],inData,pre_data[inData.id]);
+            kalmanFilterMain(data[inData.id%30],inData,pre_data[inData.id%30]);
 
             if(inData.id==35){          //打印指定ID的数据
                 cout<<"ID:"<<inData.id<<"  inData.x:"<<inData.x;
@@ -37,14 +40,14 @@ int main()
                 cout<<"              x:"<<data[inData.id].x.matrix[0][0]<<"  "<<data[inData.id].x.matrix[1][0];
                 cout<<"   y:"<<data[inData.id].y.matrix[0][0]<<"  "<<data[inData.id].y.matrix[1][0]<<endl;
 
-                cout<<"Forecast 2s:  x:";
+                cout<<"              x:";
                 cout<<pre_data[inData.id].x.matrix[0][0]<<"  "<<pre_data[inData.id].x.matrix[1][0];
                 cout<<"   y:"<<pre_data[inData.id].y.matrix[0][0]<<"  "<<pre_data[inData.id].y.matrix[1][0]<<endl;
 
             }
 
         }
-        InputData::getInuptData(inData,fp);
+        //InputData::getInuptData(inData,fp);
     }
     fp.close();
 
