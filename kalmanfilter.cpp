@@ -17,7 +17,7 @@ KalmanFilter::KalmanFilter()
  * 不含实测Z值的kalman滤波器，用于短期状态预判
  */
 void KalmanFilter::kalmanWithoutMesureData(Matrix &x , Matrix &p ){
-    Matrix F(2,2,1.0,0.4,0.0,1.0);
+    Matrix F(2,2,1.0,0.05,0.0,1.0);
     Matrix Q(2,2,0.05,0.0,0.0,0.05);
 
     //预测

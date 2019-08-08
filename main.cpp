@@ -18,25 +18,28 @@ int main()
 
     //文件读操作
     InputData inData;
-    ifstream fp("C:\\Users\\zhou\\Desktop\\2019_08_02_16_11_49.csv");
+    ifstream fp("C:\\Users\\zhou\\Desktop\\testfile.csv");
+    //ifstream fp("C:\\Users\\zhou\\Desktop\\2019_08_02_16_11_49.csv");
     string str;
     getline(fp,str);
     InputData::getInuptData(inData,fp);
 
     //筛选并运行kalman滤波器
     while(inData.status!=-1){
+    //for(int i=0 ; i<1700 ;i++){
         if(inData.status==2){
 
             kalmanFilterMain(data[inData.id],inData,pre_data[inData.id]);
 
             if(inData.id==35){          //打印指定ID的数据
-                cout<<"ID:"<<inData.id<<"  inData.x:"<<inData.x<<"   inData.y"<<inData.y<<"    time:"<<inData.time<<endl;
-                cout<<data[inData.id].x.matrix[0][0]<<"  "<<data[inData.id].x.matrix[1][0]<<endl;
-                cout<<data[inData.id].y.matrix[0][0]<<"  "<<data[inData.id].y.matrix[1][0]<<endl;
+                cout<<"ID:"<<inData.id<<"  inData.x:"<<inData.x;
+                cout<<"   inData.y:"<<inData.y<<"    time:"<<inData.time<<"=================="<<endl;
+                cout<<"              x:"<<data[inData.id].x.matrix[0][0]<<"  "<<data[inData.id].x.matrix[1][0];
+                cout<<"   y:"<<data[inData.id].y.matrix[0][0]<<"  "<<data[inData.id].y.matrix[1][0]<<endl;
 
-                cout<<"Forecast 2s:"<<endl;
-                cout<<pre_data[inData.id].x.matrix[0][0]<<"  "<<pre_data[inData.id].x.matrix[1][0]<<endl;
-                cout<<pre_data[inData.id].y.matrix[0][0]<<"  "<<pre_data[inData.id].y.matrix[1][0]<<endl;
+                cout<<"Forecast 2s:  x:";
+                cout<<pre_data[inData.id].x.matrix[0][0]<<"  "<<pre_data[inData.id].x.matrix[1][0];
+                cout<<"   y:"<<pre_data[inData.id].y.matrix[0][0]<<"  "<<pre_data[inData.id].y.matrix[1][0]<<endl;
 
             }
 
