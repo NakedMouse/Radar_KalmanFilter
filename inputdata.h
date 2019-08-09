@@ -8,7 +8,7 @@ using namespace std;
 class InputData
 {
 public:
-    InputData();
+
     string time;
     double doubletime;
     int id;
@@ -18,6 +18,8 @@ public:
     double vy;
     double status;
     double rcs;
+
+    InputData();
     static void getInuptData(InputData &a, ifstream &fp);
     static void transfer(string &a , double &b);
     static void transfer(string &a , int &b);

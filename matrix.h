@@ -16,6 +16,7 @@ public:
     static Matrix divisionNum(Matrix a , double b);
     static Matrix multiNum(Matrix a , double b);
     void set(Matrix a);
+
     double matrix[4][4];
     int row;
     int line;
