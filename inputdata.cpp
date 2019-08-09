@@ -6,17 +6,17 @@
 #include <string>
 using namespace std;
 
-InputData::InputData()
+InputData::InputData():time("0"),id(-1),x(0.0),y(0.0),vx(0.0),vy(0.0),status(0.0),rcs(0.0),doubletime(0.0)
 {
     //time=0.0;
-    id=-1;
-    x=0.0;
-    y=0.0;
-    vx=0.0;
-    vy=0.0;
-    status=0;
-    rcs=0.0;
-    doubletime=0.0;
+    //id=-1;
+//    x=0.0;
+//    y=0.0;
+//    vx=0.0;
+//    vy=0.0;
+//    status=0;
+//    rcs=0.0;
+//    doubletime=0.0;
 }
 
 /**

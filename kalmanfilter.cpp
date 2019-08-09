@@ -18,7 +18,7 @@ KalmanFilter::KalmanFilter()
  */
 void KalmanFilter::kalmanWithoutMesureData(Matrix &x , Matrix &p ){
     Matrix F(2,2,1.0,0.05,0.0,1.0);
-    Matrix Q(2,2,0.05,0.0,0.0,0.05);
+    Matrix Q(2,2,0.1,0.0,0.0,0.1);
 
     //预测
     x.set(Matrix::multi(F, x));                                                    //计算预测x
