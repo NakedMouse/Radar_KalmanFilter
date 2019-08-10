@@ -6,7 +6,7 @@
 #include "fstream"
 #include <sstream>
 #include <string>
-#include <cmath>
+#include "cmath"
 
 using namespace std;
 
@@ -39,6 +39,13 @@ int main()
         InputData::getInuptData(inData,fp);
     }
 
+    //求方差
+    double var=0,ave[600],average=0;
+    int count=0;
+//    for(int i=0 ; i<600 ; i++){
+//        ave[i] = 0;
+//    }
+
     int k=0; //改变以下循环的值
     for(int i=0 ; i<a[k] ; i++){
 
@@ -53,21 +60,35 @@ int main()
             else point = j;
         }
 
-        cout<<"ID:"<<mesure[k][i].id<<"  inData.x:"<<mesure[k][i].x;
-        cout<<"   inData.v:"<<mesure[k][i].vx<<"    time:"<<mesure[k][i].time<<"=================="<<endl;
-        cout<<"              x:"<<data.x.matrix[0][0]<<"  "<<data.x.matrix[1][0];
-        cout<<"   y:"<<data.y.matrix[0][0]<<"  "<<data.y.matrix[1][0]<<endl;
-        //data.p.printMatrix();
-        cout<<"              x:";
-        cout<<pre_data.x.matrix[0][0]<<"  "<<pre_data.x.matrix[1][0];
-        cout<<"   y:"<<pre_data.y.matrix[0][0]<<"  "<<pre_data.y.matrix[1][0]<<endl;
+//        cout<<"ID:"<<mesure[k][i].id<<"  inData.x:"<<mesure[k][i].x;
+//        cout<<"   inData.v:"<<mesure[k][i].vx<<"    time:"<<mesure[k][i].time<<"=================="<<endl;
+//        cout<<"              x:"<<data.x.matrix[0][0]<<"  "<<data.x.matrix[1][0];
+//        cout<<"   y:"<<data.y.matrix[0][0]<<"  "<<data.y.matrix[1][0]<<endl;
+//        //data.p.printMatrix();
+//        cout<<"              x:";
+//        cout<<pre_data.x.matrix[0][0]<<"  "<<pre_data.x.matrix[1][0];
+//        cout<<"   y:"<<pre_data.y.matrix[0][0]<<"  "<<pre_data.y.matrix[1][0]<<endl;
         if(point!=-1){
-            cout<<"       mesure.x:"<<mesure[k][point].x;
-            cout<<"        deviation:"<<pre_data.x.matrix[0][0]-mesure[k][point].x<<endl;
+            cout<<mesure[k][i].time<<"         mesureTime:"<<mesure[k][point].time;
+            cout<<"      timeDiv:"<<mesure[k][i].doubletime+500-mesure[k][point].doubletime<<endl;
+            cout<<"mesure.x:"<<mesure[k][point].x<<"    pre.x:"<<pre_data.x.matrix[0][0];
+            cout<<"                 deviation:"<<mesure[k][point].x-pre_data.x.matrix[0][0]<<endl;
+
+            double sum =(mesure[k][point].x-pre_data.x.matrix[0][0])/((mesure[k][i].doubletime+500-mesure[k][point].doubletime)/1000);
+            if(!isnan(sum)){
+                ave[count] =sum;
+                count++;
+            }
+
         }
         //if(isnan(data.x.matrix[0][0])) break;
 
     }
+    for(int i=0 ; i<count ;i++){
+        var+=ave[i];
+    }
+    var = var*var/count;
+    cout<<var<<endl;
     fp.close();
 
     return 0;
