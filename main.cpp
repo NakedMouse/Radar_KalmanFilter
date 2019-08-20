@@ -22,8 +22,8 @@ int main()
 
     //文件读操作
     InputData inData;               //临时存储文件读入数据
-    ifstream fp("C:\\Users\\zhou\\Desktop\\testfile.csv");
-    //ifstream fp("C:\\Users\\zhou\\Desktop\\2019_08_02_16_11_49.csv");
+//    ifstream fp("C:\\Users\\zhou\\Desktop\\testfile.csv");
+    ifstream fp("C:\\Users\\zhou\\Desktop\\2019_08_02_16_11_49.csv");
     string str;
     getline(fp,str);                //去掉文件第一行
     InputData::getInuptData(inData,fp);

@@ -7,11 +7,13 @@ SOURCES += main.cpp \
     kalmanfilter.cpp \
     matrix.cpp \
     radardata.cpp \
-    inputdata.cpp
+    inputdata.cpp \
+    inputdatacorrect.cpp
 
 HEADERS += \
     kalmanfilter.h \
     matrix.h \
     radardata.h \
-    inputdata.h
+    inputdata.h \
+    inputdatacorrect.h
 
